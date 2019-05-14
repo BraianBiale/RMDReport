@@ -62,13 +62,11 @@ Como vimos en el apartado anterior, tenemos 11 variables que caracterizan a cada
 
 
 
-```{r}
+```{r, echo=FALSE}
 load(file = "finaldata.RData")
 mathAverage <- mean(finalData$Math, na.rm = TRUE)
 physicsAverage <- mean(finalData$Physics, na.rm = TRUE)
 
 library(kableExtra)
-
-knitr::kable(finalData)
 ```
 # Interpretación {#Interpretacion .unnumbered} 
