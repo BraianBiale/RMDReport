@@ -3,9 +3,8 @@ title: Análisis de datos para predictor académico UA
 author: Facundo Rivas y Brian Biale
 date: date
 output:
-  html_document: # Variables globales
-    self_contianed: true
-    highlight: textmate
+  prettydoc::html_pretty:
+    theme: tactile
 ---
 
 # Índice {#Indice .unnumbered}
