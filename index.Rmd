@@ -5,7 +5,6 @@ date: date
 output:
   html_document: # Variables globales
     self_contianed: true
-    theme: flatly
     highlight: textmate
 ---
 
