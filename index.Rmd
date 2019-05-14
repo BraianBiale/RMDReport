@@ -1,0 +1,76 @@
+---
+title: Análisis de datos para predictor académico UA
+author: Facundo Rivas y Brian Biale
+date: date
+output:
+  html_document: # Variables globales
+    self_contianed: true
+    theme: flatly
+    highlight: textmate
+---
+
+# Índice {#Indice .unnumbered}
+* [Introducción](#Indice)
+  * Obtencion de los datos
+* [Análisis](#Analisis)
+  * Calidad de los datos
+* [Interpretación](#Interpretacion)
+
+
+# Introducción {#Introduccion .unnumbered}
+### Obtencion de los datos
+Para la realización de este reporte fueron proporcionados tres archivos *.xlsx*, los cuales contienen ingresantes de los años 2018 y 2019 de la facultad de ingeniería de la Universidad Austral. Estos datos pasaron primeramente por una etapa de *"Data Curation"* o *"Curación de Datos"*, que nos permite analizarlos e interpretarlos de una forma mas eficiente. A continuación se muestra una preview de como quedaron ordenados los datos con sus respectivas variables:
+
+
+| Name                        | Gender | Cohort | Entry                   | Math | R.Math | Physics | R.Physics | Entry Average | HS Average | School                           |
+|-----------------------------|--------|--------|-------------------------|------|--------|---------|-----------|---------------|------------|----------------------------------|
+| Estay Herreros Losio        | M      | 2018   | Ingreso Febrero         | 4    | #N/A   | 3       | 4         | #N/A          | #N/A       | Sworn College (Moreno)           |
+| Pantaleone Marin Tomas      | M      | 2018   | Cuatrimestral Part Time | 7    | #N/A   | 7       | #N/A      | #N/A          | #N/A       | Instituto San José               |
+| Braian Mateo Sol            | M      | 2018   | Ingreso Febrero         | 4    | #N/A   | 6       | #N/A      | 5             | #N/A       | Instituto San José               |
+| Berton Mato Juan            | M      | 2018   | Ingreso Septiembre      | 3    | 2      | 4       | #N/A      | #N/A          | #N/A       | Santa Soledad Torres Acosta      |
+| Luciana Lautaro Felix       | F      | 2018   | Ingreso Directo         | #N/A | #N/A   | #N/A    | #N/A      | #N/A          | #N/A       | Northlands (Nordelta)            |
+| Santiago Federico Rico      | M      | 2018   | Pase Universitario      | #N/A | #N/A   | #N/A    | #N/A      | #N/A          | #N/A       | Bedes Grammar School             |
+| Ivan Benjamín Marcos        | M      | 2018   | Ingreso Febrero         | 10   | #N/A   | 9       | #N/A      | #N/A          | #N/A       | Cardenal Pironio                 |
+| Emiliani Tomás Ivan         | M      | 2018   | Ingreso Febrero         | 6    | #N/A   | 9       | #N/A      | 7             | #N/A       | Lord Byron School (Peru)         |
+| Fabrizio Gonzalez Martinez  | M      | 2018   | Ingreso Directo         | #N/A | #N/A   | #N/A    | #N/A      | #N/A          | #N/A       | Los Molinos                      |
+| Maximiliano Abalo Alejandro | M      | 2018   | Pase Universitario      | #N/A | #N/A   | #N/A    | #N/A      | #N/A          | #N/A       | Colegio Peruano Britanico (Peru) |
+
+
+# Análisis {#Analisis .unnumbered}
+
+### Calidad de los datos
+Como vimos en el apartado anterior, tenemos 11 variables que caracterizan a cada uno de los elementos pertenecientes a nuestro conjunto de datos. Luego del proceso de *"Data Curation"*, podemos ver que hay muchas observaciones de las variables que no estan completas. Esto se debe a que, o bien fueron añadidas dichas variables al conjunto original de datos, o bien a que los datos fueron proporcionados ya de esta manera, lo cual afecta a la calidad que tiene la variable. Para analizar las calidades de las mismas, armamos la siguiente tabla mostrando cada una con su respectiva calidad (Cantidad de *NA* en cada variable, sobre el total de elementos que conforman el conjunto de datos):
+
+| Variable      | Quality |
+|---------------|---------|
+| Name          | 100%    |
+| Gender        | 100%    |
+| Cohort        | 100%    |
+| Entry         | 100%    |
+| School        | 100%    |
+| Math          | 83.44%  |
+| Physics       | 81.78%  |
+| Entry Average | 35.43%  |
+| HS Average    | 22.51%  |
+| R.Math        | 21.19%  |
+| R.Physics     | 10.26%  |
+
+### Análisis variable a variable
+
+|  Variable | Average |
+|-----------|---------|
+| Math      | 5.658   |
+| Physics   | 7.042   |
+
+
+
+```{r}
+load(file = "finaldata.RData")
+mathAverage <- mean(finalData$Math, na.rm = TRUE)
+physicsAverage <- mean(finalData$Physics, na.rm = TRUE)
+
+library(kableExtra)
+
+knitr::kable(finalData)
+```
+# Interpretación {#Interpretacion .unnumbered} 

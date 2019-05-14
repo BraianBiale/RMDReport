@@ -1,0 +1,12 @@
+name: "Curso-R"
+navbar: # Definir un navigation bar
+  title: "Curso R" 
+  type: inverse 
+  left: # Orientación de las pestañas
+    - text: "Home"
+      href: index.html
+output: 
+  html_document: # Variables globales
+    self_contianed: true
+    theme: flatly
+    highlight: textmate
