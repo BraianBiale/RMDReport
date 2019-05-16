@@ -34,280 +34,839 @@
 <header>
 <h1 class="title toc-ignore">AnÃ¡lisis de datos para predictor acadÃ©mico UA</h1>
 <h3 class="author">Facundo Rivas y Brian Biale</h3>
-<h3 class="date">date</h3>
+<h3 class="date">14/5/2019</h3>
 </header>
 
 <hr>
 
 
-
-<div id="Indice" class="section level1 unnumbered">
-<h1>Ãndice</h1>
+<div id="TOC" class="toc">
 <ul>
-<li><a href="#Indice">IntroducciÃ³n</a>
-<ul>
-<li>Obtencion de los datos</li>
+<li><a href="#introduccian">IntroducciÃ³n</a><ul>
+<li><a href="#obtencian-de-los-datos">ObtenciÃ³n de los datos</a></li>
 </ul></li>
-<li><a href="#Analisis">AnÃ¡lisis</a>
-<ul>
-<li>Calidad de los datos</li>
+<li><a href="#analisis">AnÃ¡lisis</a><ul>
+<li><a href="#calidad-de-los-datos">Calidad de los datos</a></li>
+<li><a href="#analisis-variable-a-variable">AnÃ¡lisis variable a variable</a></li>
 </ul></li>
-<li><a href="#Interpretacion">InterpretaciÃ³n</a></li>
+<li><a href="#interpretacian">InterpretaciÃ³n</a></li>
 </ul>
 </div>
-<div id="Introduccion" class="section level1 unnumbered">
+
+<div id="introduccian" class="section level1">
 <h1>IntroducciÃ³n</h1>
-<div id="obtencion-de-los-datos" class="section level3">
-<h3>Obtencion de los datos</h3>
-<p>Para la realizaciÃ³n de este reporte fueron proporcionados tres archivos <em>.xlsx</em>, los cuales contienen ingresantes de los aÃ±os 2018 y 2019 de la facultad de ingenierÃ­a de la Universidad Austral. Estos datos pasaron primeramente por una etapa de <em>“Data Curation”</em> o <em>“CuraciÃ³n de Datos”</em>, que nos permite analizarlos e interpretarlos de una forma mas eficiente. A continuaciÃ³n se muestra una preview de como quedaron ordenados los datos con sus respectivas variables:</p>
+<div id="obtencian-de-los-datos" class="section level3">
+<h3>ObtenciÃ³n de los datos</h3>
+<p>Para la realizaciÃ³n de este reporte fueron proporcionados tres archivos <em>.xlsx</em>, los cuales contienen ingresantes de los aÃ±os 2018 y 2019 de la facultad de ingenierÃ­a de la Universidad Austral. Estos datos pasaron primeramente por una etapa de <em>“Data Curation”</em> o <em>“CuraciÃ³n de Datos”</em>, para mejorar su calidad. A continuaciÃ³n se muestra una preview de como quedaron ordenados los datos con sus respectivas variables:</p>
 <table>
-<colgroup>
-<col width="17%" />
-<col width="4%" />
-<col width="4%" />
-<col width="15%" />
-<col width="3%" />
-<col width="4%" />
-<col width="5%" />
-<col width="6%" />
-<col width="9%" />
-<col width="7%" />
-<col width="20%" />
-</colgroup>
 <thead>
-<tr class="header">
-<th>Name</th>
-<th>Gender</th>
-<th>Cohort</th>
-<th>Entry</th>
-<th>Math</th>
-<th>R.Math</th>
-<th>Physics</th>
-<th>R.Physics</th>
-<th>Entry Average</th>
-<th>HS Average</th>
-<th>School</th>
+<tr>
+<th style="text-align:center;">
+Name
+</th>
+<th style="text-align:center;">
+Gender
+</th>
+<th style="text-align:center;">
+Cohort
+</th>
+<th style="text-align:center;">
+Entry
+</th>
+<th style="text-align:center;">
+Math
+</th>
+<th style="text-align:center;">
+R.Math
+</th>
+<th style="text-align:center;">
+Physics
+</th>
+<th style="text-align:center;">
+R.Physics
+</th>
+<th style="text-align:center;">
+Entry Average
+</th>
+<th style="text-align:center;">
+HS Average
+</th>
+<th style="text-align:center;">
+School
+</th>
+<th style="text-align:center;">
+Year
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Estay Herreros Losio</td>
-<td>M</td>
-<td>2018</td>
-<td>Ingreso Febrero</td>
-<td>4</td>
-<td>#N/A</td>
-<td>3</td>
-<td>4</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>Sworn College (Moreno)</td>
+<tr>
+<td style="text-align:center;">
+Estay Herreros Losio
+</td>
+<td style="text-align:center;">
+M
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Ingreso Febrero
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+Sworn
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
-<tr class="even">
-<td>Pantaleone Marin Tomas</td>
-<td>M</td>
-<td>2018</td>
-<td>Cuatrimestral Part Time</td>
-<td>7</td>
-<td>#N/A</td>
-<td>7</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>Instituto San JosÃ©</td>
+<tr>
+<td style="text-align:center;">
+Pantaleone Marin Tomas
+</td>
+<td style="text-align:center;">
+M
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Cuatrimestral
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+San Jose
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
-<tr class="odd">
-<td>Braian Mateo Sol</td>
-<td>M</td>
-<td>2018</td>
-<td>Ingreso Febrero</td>
-<td>4</td>
-<td>#N/A</td>
-<td>6</td>
-<td>#N/A</td>
-<td>5</td>
-<td>#N/A</td>
-<td>Instituto San JosÃ©</td>
+<tr>
+<td style="text-align:center;">
+Braian Mateo Sol
+</td>
+<td style="text-align:center;">
+M
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Ingreso Febrero
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+San Jose
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
-<tr class="even">
-<td>Berton Mato Juan</td>
-<td>M</td>
-<td>2018</td>
-<td>Ingreso Septiembre</td>
-<td>3</td>
-<td>2</td>
-<td>4</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>Santa Soledad Torres Acosta</td>
+<tr>
+<td style="text-align:center;">
+Berton Mato Juan
+</td>
+<td style="text-align:center;">
+M
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Ingreso Febrero
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+Santa Soledad Torres Acosta
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
-<tr class="odd">
-<td>Luciana Lautaro Felix</td>
-<td>F</td>
-<td>2018</td>
-<td>Ingreso Directo</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>Northlands (Nordelta)</td>
+<tr>
+<td style="text-align:center;">
+Luciana Lautaro Felix
+</td>
+<td style="text-align:center;">
+F
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Ingreso Directo
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NaN
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+Northlands
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
-<tr class="even">
-<td>Santiago Federico Rico</td>
-<td>M</td>
-<td>2018</td>
-<td>Pase Universitario</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>Bedes Grammar School</td>
+<tr>
+<td style="text-align:center;">
+Santiago Federico Rico
+</td>
+<td style="text-align:center;">
+M
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Pase Universitario
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NaN
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+BedeÂ´s Grammar School
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
-<tr class="odd">
-<td>Ivan BenjamÃ­n Marcos</td>
-<td>M</td>
-<td>2018</td>
-<td>Ingreso Febrero</td>
-<td>10</td>
-<td>#N/A</td>
-<td>9</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>Cardenal Pironio</td>
+<tr>
+<td style="text-align:center;">
+Ivan Benjamín Marcos
+</td>
+<td style="text-align:center;">
+M
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Ingreso Febrero
+</td>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+Cardenal Pironio
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
-<tr class="even">
-<td>Emiliani TomÃ¡s Ivan</td>
-<td>M</td>
-<td>2018</td>
-<td>Ingreso Febrero</td>
-<td>6</td>
-<td>#N/A</td>
-<td>9</td>
-<td>#N/A</td>
-<td>7</td>
-<td>#N/A</td>
-<td>Lord Byron School (Peru)</td>
+<tr>
+<td style="text-align:center;">
+Emiliani Tomás Ivan
+</td>
+<td style="text-align:center;">
+M
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Ingreso Febrero
+</td>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+Lord Byron School (Peru)
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
-<tr class="odd">
-<td>Fabrizio Gonzalez Martinez</td>
-<td>M</td>
-<td>2018</td>
-<td>Ingreso Directo</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>Los Molinos</td>
+<tr>
+<td style="text-align:center;">
+Fabrizio Gonzalez Martinez
+</td>
+<td style="text-align:center;">
+M
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Ingreso Directo
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NaN
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+Los Molinos
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
-<tr class="even">
-<td>Maximiliano Abalo Alejandro</td>
-<td>M</td>
-<td>2018</td>
-<td>Pase Universitario</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>#N/A</td>
-<td>Colegio Peruano Britanico (Peru)</td>
+<tr>
+<td style="text-align:center;">
+Maximiliano Abalo Alejandro
+</td>
+<td style="text-align:center;">
+M
+</td>
+<td style="text-align:center;">
+2018
+</td>
+<td style="text-align:center;">
+Pase Universitario
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+NaN
+</td>
+<td style="text-align:center;">
+NA
+</td>
+<td style="text-align:center;">
+Colegio Peruano Britanico (Peru)
+</td>
+<td style="text-align:center;">
+2018
+</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="Analisis" class="section level1 unnumbered">
+<div id="analisis" class="section level1">
 <h1>AnÃ¡lisis</h1>
 <div id="calidad-de-los-datos" class="section level3">
 <h3>Calidad de los datos</h3>
-<p>Como vimos en el apartado anterior, tenemos 11 variables que caracterizan a cada uno de los elementos pertenecientes a nuestro conjunto de datos. Luego del proceso de <em>“Data Curation”</em>, podemos ver que hay muchas observaciones de las variables que no estan completas. Esto se debe a que, o bien fueron aÃ±adidas dichas variables al conjunto original de datos, o bien a que los datos fueron proporcionados ya de esta manera, lo cual afecta a la calidad que tiene la variable. Para analizar las calidades de las mismas, armamos la siguiente tabla mostrando cada una con su respectiva calidad (Cantidad de <em>NA</em> en cada variable, sobre el total de elementos que conforman el conjunto de datos):</p>
+<p>Como se puede ver hay 12 variables que caracterizan a cada uno de los elementos pertenecientes al conjunto de datos. Luego del proceso de <em>“Data Curation”</em>, hay muchas observaciones de las variables que no estan completas. Esto se debe a que, o bien fueron aÃ±adidas dichas variables al conjunto original de datos, o bien a que los datos fueron proporcionados ya de esta manera, lo cual afecta a la calidad que tiene la variable. En la siguiente tabla se muestran las variables con sus respectivas calidades (Cantidad de <em>NA</em> en cada variable, sobre el total de elementos que conforman el conjunto de datos):</p>
 <table>
 <thead>
-<tr class="header">
-<th>Variable</th>
-<th>Quality</th>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Porcentaje
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Name</td>
-<td>100%</td>
+<tr>
+<td style="text-align:left;">
+Name
+</td>
+<td style="text-align:right;">
+100
+</td>
 </tr>
-<tr class="even">
-<td>Gender</td>
-<td>100%</td>
+<tr>
+<td style="text-align:left;">
+Gender
+</td>
+<td style="text-align:right;">
+100
+</td>
 </tr>
-<tr class="odd">
-<td>Cohort</td>
-<td>100%</td>
+<tr>
+<td style="text-align:left;">
+Cohort
+</td>
+<td style="text-align:right;">
+100
+</td>
 </tr>
-<tr class="even">
-<td>Entry</td>
-<td>100%</td>
+<tr>
+<td style="text-align:left;">
+Entry
+</td>
+<td style="text-align:right;">
+100
+</td>
 </tr>
-<tr class="odd">
-<td>School</td>
-<td>100%</td>
+<tr>
+<td style="text-align:left;">
+Math
+</td>
+<td style="text-align:right;">
+82
+</td>
 </tr>
-<tr class="even">
-<td>Math</td>
-<td>83.44%</td>
+<tr>
+<td style="text-align:left;">
+R.Math
+</td>
+<td style="text-align:right;">
+17
+</td>
 </tr>
-<tr class="odd">
-<td>Physics</td>
-<td>81.78%</td>
+<tr>
+<td style="text-align:left;">
+Physics
+</td>
+<td style="text-align:right;">
+81
+</td>
 </tr>
-<tr class="even">
-<td>Entry Average</td>
-<td>35.43%</td>
+<tr>
+<td style="text-align:left;">
+R.Physics
+</td>
+<td style="text-align:right;">
+9
+</td>
 </tr>
-<tr class="odd">
-<td>HS Average</td>
-<td>22.51%</td>
+<tr>
+<td style="text-align:left;">
+Entry Average
+</td>
+<td style="text-align:right;">
+84
+</td>
 </tr>
-<tr class="even">
-<td>R.Math</td>
-<td>21.19%</td>
+<tr>
+<td style="text-align:left;">
+HS Average
+</td>
+<td style="text-align:right;">
+23
+</td>
 </tr>
-<tr class="odd">
-<td>R.Physics</td>
-<td>10.26%</td>
+<tr>
+<td style="text-align:left;">
+School
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Year
+</td>
+<td style="text-align:right;">
+100
+</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="analisis-variable-a-variable" class="section level3">
 <h3>AnÃ¡lisis variable a variable</h3>
+<p>Una vez curados los datos, se hace un anÃ¡lisis “variable a variable” para extraer informaciÃ³n de las mismas.</p>
+<div id="ganero-de-los-ingresantes" class="section level4">
+<h4>GÃ©nero de los ingresantes</h4>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" /><!-- --></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" /><!-- --></p>
+<p>Como puede notarse en los grÃ¡ficos que el porcentaje de mujeres con respecto al de varones es mayor en el aÃ±o 2019 que en el 2018.</p>
+</div>
+<div id="tipos-de-ingreso" class="section level4">
+<h4>Tipos de ingreso</h4>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" /><!-- --></p>
+<p>El eje horizontal del grÃ¡fico representa la cantidad de ingresantes y el eje vertical contiene los distintos tipos de ingresos. Se puede ver que una gran mayorÃ­a de las personas eligen el curso de ingreso de febrero para entrar a la universidad.</p>
+</div>
+<div id="colegios-de-procedencia" class="section level4">
+<h4>Colegios de procedencia</h4>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" /><!-- --></p>
+<p>El eje vertical del grÃ¡fico representa la cantidad de ingresantes que proporciona cada colegio y el eje horizontal contiene los nombres de los colegios. “Los Molinos”, el colegio que mÃ¡s aportÃ³ ingresantes es de la misma zona que la Universidad Austral.</p>
+</div>
+<div id="notas-del-examen-de-matematica" class="section level4">
+<h4>Notas del examen de MatemÃ¡tica</h4>
+<p>Se analizan el promedio de todas las notas y el porcentaje de ingresantes que aprobaron el examen en primer instancia, en los aÃ±os 2018 y 2019.</p>
+<p><strong>2018:</strong></p>
 <table>
 <thead>
-<tr class="header">
-<th>Variable</th>
-<th>Average</th>
+<tr>
+<th style="text-align:center;">
+Promedio
+</th>
+<th style="text-align:center;">
+Aprobados
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Math</td>
-<td>5.658</td>
-</tr>
-<tr class="even">
-<td>Physics</td>
-<td>7.042</td>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+63 %
+</td>
 </tr>
 </tbody>
 </table>
+<p><strong>2019:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+Promedio
+</th>
+<th style="text-align:center;">
+Aprobados
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+59 %
+</td>
+</tr>
+</tbody>
+</table>
+<p>El promedio de nota de los exÃ¡menes se mantuvo igual pero el porcentaje de aprobados del aÃ±o 2019 es menor.</p>
+</div>
+<div id="notas-del-examen-de-fasica" class="section level4">
+<h4>Notas del examen de FÃ­sica</h4>
+<p>Se analizan el promedio de todas las notas y el porcentaje de ingresantes que aprobaron el examen en primer instancia, en los aÃ±os 2018 y 2019.</p>
+<p><strong>2018:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+Promedio
+</th>
+<th style="text-align:center;">
+Aprobados
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+92 %
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2019:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+Promedio
+</th>
+<th style="text-align:center;">
+Aprobados
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+74 %
+</td>
+</tr>
+</tbody>
+</table>
+<p>El promedio de nota de los exÃ¡menes bajÃ³ y al igual que el porcentaje de aprobados.</p>
+<p><strong>Se puede notar que en ambas materias el porcentaje de aprobados del aÃ±o 2019 es menor que el de 2018</strong></p>
+</div>
+<div id="promedio-de-ingreso" class="section level4">
+<h4>Promedio de ingreso</h4>
+<p>Se analizan los datos de promedio de ingreso observando el porcentaje de ingresantes que obtuvo una puntuaciÃ³n mayor a 7.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" /><!-- --></p>
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" /><!-- --></p>
+<p><strong>Observese que el porcentaje de ingresantes que obtuvieron un promedio mayor a 7 en 2019 es mÃ¡s de un 10% menor que en 2018.</strong></p>
+</div>
+<div id="promedio-de-secundaria" class="section level4">
+<h4>Promedio de secundaria</h4>
+<p>Analizamos los datos de promedio de secundaria y obtenemos un top 5.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+Name
+</th>
+<th style="text-align:center;">
+HS Average
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Lucas Susnisky Joaquin
+</td>
+<td style="text-align:center;">
+9.60
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Delfina Arias Tomas
+</td>
+<td style="text-align:center;">
+9.45
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Katia Maximiliano Matias
+</td>
+<td style="text-align:center;">
+9.41
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Fernandez Pedro Olivera
+</td>
+<td style="text-align:center;">
+9.34
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Santiago Pianetti Martinez
+</td>
+<td style="text-align:center;">
+9.20
+</td>
+</tr>
+</tbody>
+</table>
+<p>La primer columna representando el nombre y la segunda representando el promedio de secundaria.</p>
+</div>
+<div id="recuperatorios" class="section level4">
+<h4>Recuperatorios</h4>
+<p>Para las columnas de recuperatorios (MatemÃ¡tica y FÃ­sica) se analizaron los datos obteniendo un porcentaje de ingresantes que tuvieron que rendir recuperatorio para cada aÃ±o.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" /><!-- --></p>
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" /><!-- --></p>
+<p><strong>Los porcentajes para ambos aÃ±os son muy similares.</strong></p>
 </div>
 </div>
-<div id="Interpretacion" class="section level1 unnumbered">
+</div>
+<div id="interpretacian" class="section level1">
 <h1>InterpretaciÃ³n</h1>
+<p>Luego de analizar los datos variable a variable, se hace una interpretaciÃ³n de dichos anÃ¡lisis cruzando datos con el fin de obtener mÃ¡s informaciÃ³n de las conclusiones a las que se llega.</p>
+<div id="media-de-los-promedios-de-ingreso-segun-ganero" class="section level4">
+<h4>Media de los promedios de ingreso segun gÃ©nero</h4>
+<p><strong>2018:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Varones
+</td>
+<td style="text-align:right;">
+7.01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mujeres
+</td>
+<td style="text-align:right;">
+7.41
+</td>
+</tr>
+</tbody>
+</table>
+<p>Las mujeres obtuvieron un promedio de ingreso 0.40 puntos mayor al de los varones.</p>
+<p><strong>2019:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Varones
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mujeres
+</td>
+<td style="text-align:right;">
+6.55
+</td>
+</tr>
+</tbody>
+</table>
+<p>Las mujeres obtuvieron un promedio de ingreso 0.09 puntos mayor al de los varones.</p>
+<p><strong>La diferencia de promedios de ingreso entre varones y mujeres fue mas baja en el Ãºltimo aÃ±o.</strong></p>
+</div>
 </div>
 </div>
 </div>
