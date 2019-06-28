@@ -8,56 +8,92 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name="author" content="Facundo Rivas y Brian Biale" />
+<meta name="author" content="Facundo Rivas y Braian Biale" />
 
 
-<title>AnÃ¡lisis de datos para predictor acadÃ©mico UA</title>
+<title>Análisis de datos para predictor académico UA</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+<script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+<link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+<script src="site_libs/readthedown-0.1/readthedown.js"></script>
 
 
 
-
-
-
-<link rel="stylesheet" href="index_files/style.css" type="text/css" />
 
 </head>
 
 <body>
 
 
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Curso R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="content" data-toggle="wy-nav-shift">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+<nav id="nav-top" role="navigation" aria-label="top navigation">
+    <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+</nav>
 
 
-<div id="container">
-<div class="inner">
-<header>
-<h1 class="title toc-ignore">AnÃ¡lisis de datos para predictor acadÃ©mico UA</h1>
-<h3 class="author">Facundo Rivas y Brian Biale</h3>
-<h3 class="date">14/5/2019</h3>
-</header>
-
-<hr>
-
-
-<div id="TOC" class="toc">
-<ul>
-<li><a href="#introduccian">IntroducciÃ³n</a><ul>
-<li><a href="#obtencian-de-los-datos">ObtenciÃ³n de los datos</a></li>
-</ul></li>
-<li><a href="#analisis">AnÃ¡lisis</a><ul>
-<li><a href="#calidad-de-los-datos">Calidad de los datos</a></li>
-<li><a href="#analisis-variable-a-variable">AnÃ¡lisis variable a variable</a></li>
-</ul></li>
-<li><a href="#interpretacian">InterpretaciÃ³n</a></li>
-</ul>
+<div id="header">
+<h1 class="title">Análisis de datos para predictor académico UA</h1>
 </div>
 
-<div id="introduccian" class="section level1">
-<h1>IntroducciÃ³n</h1>
-<div id="obtencian-de-los-datos" class="section level3">
-<h3>ObtenciÃ³n de los datos</h3>
-<p>Para la realizaciÃ³n de este reporte fueron proporcionados tres archivos <em>.xlsx</em>, los cuales contienen ingresantes de los aÃ±os 2018 y 2019 de la facultad de ingenierÃ­a de la Universidad Austral. Estos datos pasaron primeramente por una etapa de <em>“Data Curation”</em> o <em>“CuraciÃ³n de Datos”</em>, para mejorar su calidad. A continuaciÃ³n se muestra una preview de como quedaron ordenados los datos con sus respectivas variables:</p>
+
+<div id="table-of-contents">
+    <h2><a href="#content">Análisis de datos para predictor académico UA</a></h2>
+    <div id="text-table-of-contents">
+      <ul>
+      <li><a href="#introduccion">Introducción</a></li>
+      <li><a href="#analisis">Análisis</a></li>
+      <li><a href="#interpretacion">Interpretación</a></li>
+      </ul>
+    </div>
+</div>
+
+<div id="main">
+<div id="introduccion" class="section level1">
+<h1>Introducción</h1>
+<div id="obtencion-de-los-datos" class="section level3">
+<h3>Obtención de los datos</h3>
+<p>Para la realización de este reporte fueron proporcionados tres archivos <em>.xlsx</em>, los cuales contienen ingresantes de los años 2018 y 2019 de la facultad de ingeniería de la Universidad Austral. Estos datos pasaron primeramente por una etapa de <em>“Data Curation”</em> o <em>“Curación de Datos”</em>, para mejorar su calidad. A continuación se muestra una preview de como quedaron ordenados los datos con sus respectivas variables:</p>
 <table>
 <thead>
 <tr>
@@ -66,6 +102,9 @@ Name
 </th>
 <th style="text-align:center;">
 Gender
+</th>
+<th style="text-align:center;">
+Career
 </th>
 <th style="text-align:center;">
 Cohort
@@ -108,6 +147,9 @@ Estay Herreros Losio
 M
 </td>
 <td style="text-align:center;">
+INF
+</td>
+<td style="text-align:center;">
 2018
 </td>
 <td style="text-align:center;">
@@ -144,6 +186,9 @@ Pantaleone Marin Tomas
 </td>
 <td style="text-align:center;">
 M
+</td>
+<td style="text-align:center;">
+INF
 </td>
 <td style="text-align:center;">
 2018
@@ -184,6 +229,9 @@ Braian Mateo Sol
 M
 </td>
 <td style="text-align:center;">
+IND
+</td>
+<td style="text-align:center;">
 2018
 </td>
 <td style="text-align:center;">
@@ -220,6 +268,9 @@ Berton Mato Juan
 </td>
 <td style="text-align:center;">
 M
+</td>
+<td style="text-align:center;">
+IND
 </td>
 <td style="text-align:center;">
 2018
@@ -260,6 +311,9 @@ Luciana Lautaro Felix
 F
 </td>
 <td style="text-align:center;">
+IND
+</td>
+<td style="text-align:center;">
 2018
 </td>
 <td style="text-align:center;">
@@ -298,6 +352,9 @@ Santiago Federico Rico
 M
 </td>
 <td style="text-align:center;">
+IND
+</td>
+<td style="text-align:center;">
 2018
 </td>
 <td style="text-align:center;">
@@ -322,7 +379,7 @@ NaN
 NA
 </td>
 <td style="text-align:center;">
-BedeÂ´s Grammar School
+Bede´s Grammar School
 </td>
 <td style="text-align:center;">
 2018
@@ -334,6 +391,9 @@ Ivan Benjamín Marcos
 </td>
 <td style="text-align:center;">
 M
+</td>
+<td style="text-align:center;">
+IND
 </td>
 <td style="text-align:center;">
 2018
@@ -374,6 +434,9 @@ Emiliani Tomás Ivan
 M
 </td>
 <td style="text-align:center;">
+INF
+</td>
+<td style="text-align:center;">
 2018
 </td>
 <td style="text-align:center;">
@@ -410,6 +473,9 @@ Fabrizio Gonzalez Martinez
 </td>
 <td style="text-align:center;">
 M
+</td>
+<td style="text-align:center;">
+IND
 </td>
 <td style="text-align:center;">
 2018
@@ -450,6 +516,9 @@ Maximiliano Abalo Alejandro
 M
 </td>
 <td style="text-align:center;">
+IND
+</td>
+<td style="text-align:center;">
 2018
 </td>
 <td style="text-align:center;">
@@ -485,10 +554,10 @@ Colegio Peruano Britanico (Peru)
 </div>
 </div>
 <div id="analisis" class="section level1">
-<h1>AnÃ¡lisis</h1>
+<h1>Análisis</h1>
 <div id="calidad-de-los-datos" class="section level3">
 <h3>Calidad de los datos</h3>
-<p>Como se puede ver hay 12 variables que caracterizan a cada uno de los elementos pertenecientes al conjunto de datos. Luego del proceso de <em>“Data Curation”</em>, hay muchas observaciones de las variables que no estan completas. Esto se debe a que, o bien fueron aÃ±adidas dichas variables al conjunto original de datos, o bien a que los datos fueron proporcionados ya de esta manera, lo cual afecta a la calidad que tiene la variable. En la siguiente tabla se muestran las variables con sus respectivas calidades (Cantidad de <em>NA</em> en cada variable, sobre el total de elementos que conforman el conjunto de datos):</p>
+<p>Como se puede ver hay 12 variables que caracterizan a cada uno de los elementos pertenecientes al conjunto de datos. Luego del proceso de <em>“Data Curation”</em>, hay muchas observaciones de las variables que no estan completas. Esto se debe a que, o bien fueron añadidas dichas variables al conjunto original de datos, o bien a que los datos fueron proporcionados ya de esta manera, lo cual afecta a la calidad que tiene la variable. En la siguiente tabla se muestran las variables con sus respectivas calidades (Cantidad de <em>NA</em> en cada variable, sobre el total de elementos que conforman el conjunto de datos):</p>
 <table>
 <thead>
 <tr>
@@ -511,6 +580,14 @@ Name
 <tr>
 <td style="text-align:left;">
 Gender
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Career
 </td>
 <td style="text-align:right;">
 100
@@ -561,7 +638,7 @@ Physics
 R.Physics
 </td>
 <td style="text-align:right;">
-9
+10
 </td>
 </tr>
 <tr>
@@ -600,27 +677,28 @@ Year
 </table>
 </div>
 <div id="analisis-variable-a-variable" class="section level3">
-<h3>AnÃ¡lisis variable a variable</h3>
-<p>Una vez curados los datos, se hace un anÃ¡lisis “variable a variable” para extraer informaciÃ³n de las mismas.</p>
-<div id="ganero-de-los-ingresantes" class="section level4">
-<h4>GÃ©nero de los ingresantes</h4>
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" /><!-- --></p>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" /><!-- --></p>
-<p>Como puede notarse en los grÃ¡ficos que el porcentaje de mujeres con respecto al de varones es mayor en el aÃ±o 2019 que en el 2018.</p>
+<h3>Análisis variable a variable</h3>
+<p>Una vez curados los datos, se hace un análisis “variable a variable” para extraer información de las mismas.</p>
+<div id="genero-de-los-ingresantes" class="section level4">
+<h4>Género de los ingresantes</h4>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
+<pre><code>## [1] 2.276244 5.417836</code></pre>
+<p>Como puede notarse en los gráficos que el porcentaje de mujeres con respecto al de varones es mayor en el año 2019 que en el 2018.</p>
 </div>
 <div id="tipos-de-ingreso" class="section level4">
 <h4>Tipos de ingreso</h4>
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" /><!-- --></p>
-<p>El eje horizontal del grÃ¡fico representa la cantidad de ingresantes y el eje vertical contiene los distintos tipos de ingresos. Se puede ver que una gran mayorÃ­a de las personas eligen el curso de ingreso de febrero para entrar a la universidad.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
+<p>El eje horizontal del gráfico representa la cantidad de ingresantes y el eje vertical contiene los distintos tipos de ingresos. Se puede ver que una gran mayoría de las personas eligen el curso de ingreso de febrero para entrar a la universidad.</p>
 </div>
 <div id="colegios-de-procedencia" class="section level4">
 <h4>Colegios de procedencia</h4>
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" /><!-- --></p>
-<p>El eje vertical del grÃ¡fico representa la cantidad de ingresantes que proporciona cada colegio y el eje horizontal contiene los nombres de los colegios. “Los Molinos”, el colegio que mÃ¡s aportÃ³ ingresantes es de la misma zona que la Universidad Austral.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="768" /></p>
+<p>El eje vertical del gráfico representa la cantidad de ingresantes que proporciona cada colegio y el eje horizontal contiene los nombres de los colegios. “Los Molinos”, el colegio que más aportó ingresantes es de la misma zona que la Universidad Austral.</p>
 </div>
 <div id="notas-del-examen-de-matematica" class="section level4">
-<h4>Notas del examen de MatemÃ¡tica</h4>
-<p>Se analizan el promedio de todas las notas y el porcentaje de ingresantes que aprobaron el examen en primer instancia, en los aÃ±os 2018 y 2019.</p>
+<h4>Notas del examen de Matemática</h4>
+<p>Se analizan el promedio de todas las notas y el porcentaje de ingresantes que aprobaron el examen en primer instancia, en los años 2018 y 2019.</p>
 <p><strong>2018:</strong></p>
 <table>
 <thead>
@@ -639,7 +717,7 @@ Aprobados
 6
 </td>
 <td style="text-align:center;">
-63 %
+62 %
 </td>
 </tr>
 </tbody>
@@ -662,16 +740,16 @@ Aprobados
 6
 </td>
 <td style="text-align:center;">
-59 %
+57 %
 </td>
 </tr>
 </tbody>
 </table>
-<p>El promedio de nota de los exÃ¡menes se mantuvo igual pero el porcentaje de aprobados del aÃ±o 2019 es menor.</p>
+<p>El promedio de nota de los exámenes se mantuvo igual pero el porcentaje de aprobados del año 2019 es menor.</p>
 </div>
-<div id="notas-del-examen-de-fasica" class="section level4">
-<h4>Notas del examen de FÃ­sica</h4>
-<p>Se analizan el promedio de todas las notas y el porcentaje de ingresantes que aprobaron el examen en primer instancia, en los aÃ±os 2018 y 2019.</p>
+<div id="notas-del-examen-de-fisica" class="section level4">
+<h4>Notas del examen de Física</h4>
+<p>Se analizan el promedio de todas las notas y el porcentaje de ingresantes que aprobaron el examen en primer instancia, en los años 2018 y 2019.</p>
 <p><strong>2018:</strong></p>
 <table>
 <thead>
@@ -690,7 +768,7 @@ Aprobados
 8
 </td>
 <td style="text-align:center;">
-92 %
+91 %
 </td>
 </tr>
 </tbody>
@@ -713,94 +791,41 @@ Aprobados
 7
 </td>
 <td style="text-align:center;">
-74 %
+72 %
 </td>
 </tr>
 </tbody>
 </table>
-<p>El promedio de nota de los exÃ¡menes bajÃ³ y al igual que el porcentaje de aprobados.</p>
-<p><strong>Se puede notar que en ambas materias el porcentaje de aprobados del aÃ±o 2019 es menor que el de 2018</strong></p>
+<p>El promedio de nota de los exámenes bajó y al igual que el porcentaje de aprobados.</p>
+<p><strong>Se puede notar que en ambas materias el porcentaje de aprobados del año 2019 es menor que el de 2018</strong></p>
 </div>
 <div id="promedio-de-ingreso" class="section level4">
 <h4>Promedio de ingreso</h4>
-<p>Se analizan los datos de promedio de ingreso observando el porcentaje de ingresantes que obtuvo una puntuaciÃ³n mayor a 7.</p>
-<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" /><!-- --></p>
-<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" /><!-- --></p>
-<p><strong>Observese que el porcentaje de ingresantes que obtuvieron un promedio mayor a 7 en 2019 es mÃ¡s de un 10% menor que en 2018.</strong></p>
+<p>Se analizan los datos de promedio de ingreso observando el porcentaje de ingresantes que obtuvo una puntuación mayor a 7.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" width="768" /></p>
+<p><strong>Observese que el porcentaje de ingresantes que obtuvieron un promedio mayor a 7 en 2019 es más de un 10% menor que en 2018.</strong></p>
 </div>
 <div id="promedio-de-secundaria" class="section level4">
 <h4>Promedio de secundaria</h4>
 <p>Analizamos los datos de promedio de secundaria y obtenemos un top 5.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center;">
-Name
-</th>
-<th style="text-align:center;">
-HS Average
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">
-Lucas Susnisky Joaquin
-</td>
-<td style="text-align:center;">
-9.60
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-Delfina Arias Tomas
-</td>
-<td style="text-align:center;">
-9.45
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-Katia Maximiliano Matias
-</td>
-<td style="text-align:center;">
-9.41
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-Fernandez Pedro Olivera
-</td>
-<td style="text-align:center;">
-9.34
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-Santiago Pianetti Martinez
-</td>
-<td style="text-align:center;">
-9.20
-</td>
-</tr>
-</tbody>
-</table>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;HS Average&#39;.</code></pre>
 <p>La primer columna representando el nombre y la segunda representando el promedio de secundaria.</p>
 </div>
 <div id="recuperatorios" class="section level4">
 <h4>Recuperatorios</h4>
-<p>Para las columnas de recuperatorios (MatemÃ¡tica y FÃ­sica) se analizaron los datos obteniendo un porcentaje de ingresantes que tuvieron que rendir recuperatorio para cada aÃ±o.</p>
-<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" /><!-- --></p>
-<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" /><!-- --></p>
-<p><strong>Los porcentajes para ambos aÃ±os son muy similares.</strong></p>
+<p>Para las columnas de recuperatorios (Matemática y Física) se analizaron los datos obteniendo un porcentaje de ingresantes que tuvieron que rendir recuperatorio para cada año.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" width="768" /></p>
+<p><strong>Los porcentajes para ambos años son muy similares.</strong></p>
 </div>
 </div>
 </div>
-<div id="interpretacian" class="section level1">
-<h1>InterpretaciÃ³n</h1>
-<p>Luego de analizar los datos variable a variable, se hace una interpretaciÃ³n de dichos anÃ¡lisis cruzando datos con el fin de obtener mÃ¡s informaciÃ³n de las conclusiones a las que se llega.</p>
-<div id="media-de-los-promedios-de-ingreso-segun-ganero" class="section level4">
-<h4>Media de los promedios de ingreso segun gÃ©nero</h4>
+<div id="interpretacion" class="section level1">
+<h1>Interpretación</h1>
+<p>Luego de analizar los datos variable a variable, se hace una interpretación de dichos análisis cruzando datos con el fin de obtener más información de las conclusiones a las que se llega.</p>
+<div id="media-de-los-promedios-de-ingreso-segun-genero" class="section level4">
+<h4>Media de los promedios de ingreso segun género</h4>
 <p><strong>2018:</strong></p>
 <table>
 <thead>
@@ -819,7 +844,7 @@ Mean
 Varones
 </td>
 <td style="text-align:right;">
-7.01
+6.97
 </td>
 </tr>
 <tr>
@@ -851,7 +876,7 @@ Mean
 Varones
 </td>
 <td style="text-align:right;">
-6.46
+6.33
 </td>
 </tr>
 <tr>
@@ -865,12 +890,39 @@ Mujeres
 </tbody>
 </table>
 <p>Las mujeres obtuvieron un promedio de ingreso 0.09 puntos mayor al de los varones.</p>
-<p><strong>La diferencia de promedios de ingreso entre varones y mujeres fue mas baja en el Ãºltimo aÃ±o.</strong></p>
-</div>
+<p><strong>La diferencia de promedios de ingreso entre varones y mujeres fue mas baja en el último año.</strong></p>
 </div>
 </div>
 </div>
 
+
+</div>
+
+<div id="postamble" data-toggle="wy-nav-shift" class="status">
+<p class="author"><span class="glyphicon glyphicon-user"></span> Facundo Rivas y Braian Biale</p>
+<p class="date"><span class="glyphicon glyphicon-calendar"></span> 14/5/2019</p>
+</div>
+
+
+<script>
+$(document).ready(function () {
+ 	 	$('#content img')
+ 	  .addClass("image-thumb");
+      $('#content img')
+ 	  .addClass("image-lb");
+  $('#content').magnificPopup({
+	      type:'image',
+	      closeOnContentClick: false,
+	      closeBtnInside: false,
+	      delegate: 'img',
+	      gallery: {enabled: false },
+	      image: {
+	        verticalFit: true,
+          titleSrc: 'alt'
+	      }
+ 	    });
+ 	});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
@@ -878,7 +930,7 @@ Mujeres
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
