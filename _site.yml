@@ -1,7 +1,8 @@
 name: "Curso-R"
-navbar: # Definir un navigation bar
-  title: "Curso R" 
-  type: inverse 
-  left: # Orientaci?n de las pesta?as
-    - text: "Home"
-      href: index.html
+output: 
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
